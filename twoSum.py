@@ -5,7 +5,5 @@ class Solution:
             if num[i] not in map:
                 map[target - num[i]] = i 
             else:
-                #print(map)
-                return map[num[i]], i 
-
+                return map[num[i]], i
         return -1, -1
