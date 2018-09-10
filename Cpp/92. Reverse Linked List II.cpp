@@ -25,7 +25,6 @@ public:
             index++;
         }
         nextNode = node;
-        //cout << s.size() << " " << prev->val << " " <<  nextNode->val << endl;
         while (!s.empty()) {
             node = s.top();
             s.pop();
