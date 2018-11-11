@@ -8,16 +8,28 @@
  * };
  */
 class Solution {
-    TreeNode* prev;
+    void traverse(TreeNode* node, queue<TreeNode*>& nodes) {
+        if (!node) return;
+        nodes.push(node);
+        traverse(node->left, nodes);
+        traverse(node->right, nodes);
+    }
 public:
     void flatten(TreeNode* root) {
         if (!root) return;
-        if (prev) prev->right = root;
-        TreeNode* left = root->left;
-        TreeNode* right = root->right;
-        root->left = NULL;
-        prev = root;
-        flatten(left);
-        flatten(right);
+        queue<TreeNode*> nodes;
+        traverse(root, nodes);
+        TreeNode* prev = nodes.front();
+        prev->left = NULL;
+        prev->right = NULL;
+        nodes.pop();
+        while (!nodes.empty()) {
+            TreeNode* curNode = nodes.front();
+            curNode->left = NULL;
+            curNode->right = NULL;
+            nodes.pop();
+            prev->right = curNode;
+            prev = prev->right;
+        }
     }
 };
