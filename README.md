@@ -1,2 +1,2 @@
-# README
-My solutions for leetcode problems, mainly using Python
+# LeetCode Solutions
+My solutions for leetcode problems
